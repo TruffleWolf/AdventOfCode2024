@@ -12,7 +12,7 @@ func _ready() -> void:
 	while !input_doc.eof_reached():
 		input_line = []
 		var new_string:String = input_doc.get_line()
-		var split_array:Array = new_string.rsplit(" ")
+		var split_array:Array = new_string.split(" ")
 		
 		for a in split_array:
 			input_line.append(int(a))
