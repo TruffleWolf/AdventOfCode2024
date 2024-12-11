@@ -19,6 +19,7 @@ func _ready():
 	
 	
 	
+	#difference_find()
 	find_sim_score()
 	
 
