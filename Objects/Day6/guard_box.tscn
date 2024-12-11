@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6dvt1wjrbjho"]
+
+[ext_resource type="Script" path="res://Objects/Day6/guard_box.gd" id="1_melsm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uspwv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_phbjq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ogl4"]
+albedo_color = Color(2.28621e-07, 0.39409, 0.0846118, 1)
+
+[node name="GuardBox" type="Area3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_melsm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_uspwv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+transparency = 0.32
+mesh = SubResource("BoxMesh_phbjq")
+surface_material_override/0 = SubResource("StandardMaterial3D_0ogl4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
