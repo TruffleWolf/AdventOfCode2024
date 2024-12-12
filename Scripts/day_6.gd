@@ -52,7 +52,7 @@ func part_two():
 				var test_grid:Array = total_grid.duplicate(true)
 				
 				test_grid[y][x]="#"
-				
+				print(test_grid[y][x])
 				total+=int(loop_check(test_grid))
 				
 			x+=1

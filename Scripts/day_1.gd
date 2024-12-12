@@ -18,8 +18,9 @@ func _ready():
 	right_array.resize(right_array.size()-1)
 	
 	
-	
+	#part 1
 	#difference_find()
+	#part 2
 	find_sim_score()
 	
 
