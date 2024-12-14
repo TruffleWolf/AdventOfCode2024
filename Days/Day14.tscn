@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://s2425t825yf"]
+
+[ext_resource type="Script" path="res://Scripts/day_14.gd" id="1_1u5co"]
+[ext_resource type="PackedScene" uid="uid://c0qy2o7n83qx3" path="res://Objects/Day14/texturewhite.tscn" id="2_ohoj5"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_1u5co")
+
+[node name="Display" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 952.0
+offset_bottom = 448.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="ColorRect" parent="Display"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="WhiteSquares" type="Control" parent="Display"]
+anchors_preset = 0
+offset_right = 1100.0
+offset_bottom = 200.0
+
+[node name="Texturewhite" parent="Display/WhiteSquares" instance=ExtResource("2_ohoj5")]
+layout_mode = 0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(55, 55)
