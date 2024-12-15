@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://c83ug5bfpaqyc"]
+
+[ext_resource type="Script" path="res://Objects/Day15/box_pusher.gd" id="1_xn0uw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h3o0i"]
+radius = 0.4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qw0hx"]
+radius = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ulpn"]
+albedo_color = Color(1, 0.919, 0.82, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ldiwe"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4n5rm"]
+albedo_color = Color(0.0687983, 0.0687983, 0.0687983, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_tav8n"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6igpq"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nmjhk"]
+height = 1.0
+radius = 0.1
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_xn0uw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_h3o0i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_qw0hx")
+surface_material_override/0 = SubResource("StandardMaterial3D_8ulpn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.154064, 0.717537, 0.349028)
+mesh = SubResource("SphereMesh_ldiwe")
+surface_material_override/0 = SubResource("StandardMaterial3D_4n5rm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CollisionShape3D/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.141, 0.680029, 0.349)
+mesh = SubResource("SphereMesh_ldiwe")
+surface_material_override/0 = SubResource("StandardMaterial3D_4n5rm")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="CollisionShape3D/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, -0.00719812, 0.523945, 0.36594)
+mesh = SubResource("SphereMesh_tav8n")
+surface_material_override/0 = SubResource("StandardMaterial3D_6igpq")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.32)
+shape = SubResource("CylinderShape3D_nmjhk")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.199368, 0.979925, 0, -0.979925, 0.199368, 0, 7.241, 1.019)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(0, 0, 1)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

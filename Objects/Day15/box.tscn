@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://d15punlmnuh4x"]
+
+[ext_resource type="Script" path="res://Objects/Day15/box.gd" id="1_40b0v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xud8k"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dabbm"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4a8o8"]
+albedo_color = Color(0.248237, 0.1884, 0.0565022, 1)
+
+[node name="Box" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_40b0v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
+shape = SubResource("BoxShape3D_xud8k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("BoxMesh_dabbm")
+surface_material_override/0 = SubResource("StandardMaterial3D_4a8o8")
+
+[node name="UpRay" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
+target_position = Vector3(1, 0, 0)
+
+[node name="DownRay" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1)
+target_position = Vector3(1, 0, 0)
+
+[node name="RightRay" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
+target_position = Vector3(1, 0, 0)
+
+[node name="LeftRay" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(-1, 0, 0)
+
+[node name="BoxUp1" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(0, 0, -1)
+collision_mask = 4
+
+[node name="BoxUp2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
+target_position = Vector3(0, 0, -1)
+collision_mask = 4
+
+[node name="BoxDown1" type="RayCast3D" parent="."]
+transform = Transform3D(-1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, -1, 0, 0.5, 0)
+target_position = Vector3(0, 0, -1)
+collision_mask = 4
+
+[node name="BoxDown2" type="RayCast3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 1, 0.5, 0)
+target_position = Vector3(0, 0, -1)
+collision_mask = 4
+
+[node name="BoxLeft" type="RayCast3D" parent="."]
+transform = Transform3D(-8.9407e-08, 0, 1, 0, 1, 0, -1, 0, -8.9407e-08, 0, 0.5, 0)
+target_position = Vector3(0, 0, -1)
+collision_mask = 4
+
+[node name="BoxRight" type="RayCast3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0.5, 0)
+target_position = Vector3(0, 0, -1)
+collision_mask = 4
