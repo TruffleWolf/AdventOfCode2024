@@ -51,6 +51,8 @@ func _ready() -> void:
 	print("Total:"+str(total))
 
 func part_two():
+	#part one but with a 25 here and a mini check for same length paths
+	#this code works for part one so long as you replace 25 with 2
 	directional_robots = 25
 	
 	directional_list.append(key1_robot)
