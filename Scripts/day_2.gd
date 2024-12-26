@@ -6,9 +6,9 @@ var input_array:Array
 
 var input_line:Array[int]
 
-
+var start_time:int = 0
 func _ready() -> void:
-	
+	start_time = Time.get_ticks_msec()
 	while !input_doc.eof_reached():
 		input_line = []
 		var new_string:String = input_doc.get_line()
@@ -34,21 +34,21 @@ func array_check(input:Array):
 	var safe:bool = true
 		
 	if input.size()<2:
-		safe = false
+		return false
 	elif input[0]>input[1]:
 		#decending
 		for b in input.size()-1:
 			if !input[b]>input[b+1] or abs(input[b]-input[b+1])>3:
-				safe = false
-				break
+				return false
+				
 	elif input[0]<input[1]:
 		#acending
 		for b in input.size()-1:
 			if !input[b]<input[b+1]or abs(input[b]-input[b+1])>3:
-				safe = false
-				break
+				return false
+				
 	else:
-		safe = false
+		return false
 	
 	return safe
 
@@ -72,6 +72,7 @@ func safety_check_2():
 		safety += int(safe)
 	
 	print(safety)
+	print("Elapsed:"+str(Time.get_ticks_msec()-start_time)+"ms")
 
 
 
@@ -82,3 +83,4 @@ func safety_check_1():
 		safety+= int(array_check(a))
 	
 	print(safety)
+	print("Elapsed:"+str(Time.get_ticks_msec()-start_time)+"ms")

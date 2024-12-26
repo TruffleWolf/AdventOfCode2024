@@ -5,9 +5,10 @@ extends Node
 var test_string:String 
 var left_array:Array = []
 var right_array:Array = []
+var start_time:int = 0
 func _ready():
 	#Read file and seperate left and right
-	
+	start_time = Time.get_ticks_msec()
 	while !input_doc.eof_reached():
 		test_string = input_doc.get_line()
 		left_array.append(int(test_string.left(5)))
@@ -32,6 +33,7 @@ func find_sim_score():
 			count += int(a==b)
 		sim_score+=a*count
 	print(sim_score)
+	print("Elapsed:"+str(Time.get_ticks_msec()-start_time)+"ms")
 
 
 func difference_find():
@@ -45,3 +47,4 @@ func difference_find():
 		count +=1
 		
 	print(total)
+	print("Elapsed:"+str(Time.get_ticks_msec()-start_time)+"ms")
