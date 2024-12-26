@@ -1,0 +1,1 @@
+D:\CodeRepos\Rust\AoC2024Rust\target\debug\AoC2024Rust.exe: D:\CodeRepos\Rust\AoC2024Rust\src\days\day1.rs D:\CodeRepos\Rust\AoC2024Rust\src\days\day2.rs D:\CodeRepos\Rust\AoC2024Rust\src\days\mod.rs D:\CodeRepos\Rust\AoC2024Rust\src\main.rs
