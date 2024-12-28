@@ -7,7 +7,7 @@ var rules:Array[Array]= []
 var updates:Array[Array]= []
 
 func _ready():
-	
+	var start_time:int = Time.get_ticks_msec()
 	#format the data
 	var rules_strings:Array[String] =[]
 	var update_strings:Array[String] =[]
@@ -43,7 +43,7 @@ func _ready():
 	#Part 1
 	#updates = filtered_updates
 	
-	
+	#part 2
 	updates = correct_updates(broken_updates)
 	
 	#count the pages
@@ -53,6 +53,8 @@ func _ready():
 		
 	
 	print(total)
+	
+	print("Elapsed:"+str(Time.get_ticks_msec()-start_time)+"ms")
 
 
 func correct_updates(input:Array[Array]):
@@ -62,7 +64,7 @@ func correct_updates(input:Array[Array]):
 		
 		var unsorted:bool = true
 		var count = 0
-		print("INPUT:"+str(i))
+		#print("INPUT:"+str(i))
 		while unsorted:
 			var target = i[-1-count]
 			for r in rules:
@@ -74,7 +76,7 @@ func correct_updates(input:Array[Array]):
 						count = -1
 			count +=1
 			unsorted = count < i.size()
-		print("OUTPUT:"+str(i))
+		#print("OUTPUT:"+str(i))
 		repaired_array.append(i)
 	
 	return repaired_array

@@ -10,6 +10,7 @@ var relevant_grid:Array = []
 var start_location:Vector2i
 
 func _ready():
+	var start_time:int = Time.get_ticks_msec()
 	#format the data
 	while !input_doc.eof_reached():
 		var row:PackedStringArray = input_doc.get_line().split("")
@@ -33,8 +34,16 @@ func _ready():
 	
 	#part 1
 	#part_one()
+	#var total:int = 0
+	#for y in relevant_grid:
+		#for x in y:
+			#total+=int(x)
+	#
+	#print("Total:"+str(total))
 	#part 2
 	part_two()
+	
+	print("Elapsed:"+str(Time.get_ticks_msec()-start_time)+"ms")
 
 func part_two():
 	#yeah I don't know if 3d will cut it for this one

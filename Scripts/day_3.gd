@@ -7,6 +7,7 @@ var mult_list:Array
 
 
 func _ready() -> void:
+	var start_time:int = Time.get_ticks_msec()
 	
 	#part 1
 	#mult_list = compile_all_multi(total_string)
@@ -20,6 +21,8 @@ func _ready() -> void:
 	
 	
 	print(total)
+	
+	print("Elapsed:"+str(Time.get_ticks_msec()-start_time)+"ms")
 
 
 func compile_enabled_multi(input_str:String):
@@ -37,10 +40,13 @@ func compile_enabled_multi(input_str:String):
 	
 	
 	for f in filtered_strings:
-		
+		if new_array.size() == 70:
+			print(f)
 		new_array = new_array+compile_all_multi(f)
-		
+		print(new_array.size())
 	
+	var test_array = [enabled_strings.size(),new_array.size()]
+	print(test_array)
 	
 	
 	return new_array

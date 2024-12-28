@@ -16,6 +16,7 @@ var ne_found:int = 0
 
 
 func _ready():
+	var start_time:int = Time.get_ticks_msec()
 	#format the data
 	while !input_doc.eof_reached():
 		var row:PackedStringArray = input_doc.get_line().split("")
@@ -30,6 +31,7 @@ func _ready():
 	#parse_xmas()
 	#Part2
 	parse_cross_mas()
+	print("Elapsed:"+str(Time.get_ticks_msec()-start_time)+"ms")
 
 func parse_cross_mas():
 	var total_found:int = 0
