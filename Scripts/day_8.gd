@@ -8,7 +8,7 @@ var relevant_grid:Array = []
 var frequency_list:Dictionary = {}
 
 func _ready() -> void:
-	
+	var start_time:int = Time.get_ticks_msec()
 	while !input_doc.eof_reached():
 		var row:PackedStringArray = input_doc.get_line().split("")
 		
@@ -54,13 +54,15 @@ func _ready() -> void:
 			
 	
 	print("Total: "+str(total))
+	
+	print("Elapsed:"+str(Time.get_ticks_msec()-start_time)+"ms")
 
 
 
 func part_two():
 	#tag all antinodes in the relevance grid
 	for f in frequency_list.keys():
-		var count:int = 0
+		
 		for a in frequency_list[f]:
 			for b in frequency_list[f]:
 				relevant_grid[b.y][b.x]=true
@@ -82,7 +84,7 @@ func bounds_check(origin:Vector2i):
 func part_one():
 	#tag all antinodes in the relevance grid
 	for f in frequency_list.keys():
-		var count:int = 0
+		
 		for a in frequency_list[f]:
 			for b in frequency_list[f]:
 				if b!=a:

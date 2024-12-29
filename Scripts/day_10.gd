@@ -5,13 +5,13 @@ extends Node
 
 var topo_map:Array[Array]= []
 
-var start_points:Array[Vector2i] = []
-var end_points:Array[Vector2i] = []
+
 
 const START_HEIGHT:int = 0
 const END_HEIGHT:int = 9
 
 func _ready():
+	var start_time:int = Time.get_ticks_msec()
 	#parse the document
 	while !input_doc.eof_reached():
 		var row:PackedStringArray = input_doc.get_line().split("")
@@ -34,13 +34,11 @@ func _ready():
 		for s in t:
 			if s == 0:
 				total += scan_trail(Vector2i(x,y))
-				start_points.append(Vector2i(x,y))
-			elif s == 9:
-				end_points.append(Vector2i(x,y))
 			x+=1
 		y+=1
 	
 	print("total:"+str(total))
+	print("Elapsed:"+str(Time.get_ticks_msec()-start_time)+"ms")
 
 func scan_trail(input:Vector2i):
 	var stage:int = 0
@@ -60,7 +58,7 @@ func scan_trail(input:Vector2i):
 		stage+=1
 	
 	#uncomment for part 1
-	#target_locations = filter_array(target_locations)
+	target_locations = filter_array(target_locations)
 	
 	return target_locations.size()
 

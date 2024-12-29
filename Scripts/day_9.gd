@@ -8,6 +8,7 @@ var empty_spaces:Dictionary
 var number_array:Array[int]
 
 func _ready():
+	var start_time:int = Time.get_ticks_msec()
 	
 	parse_document()
 	
@@ -18,7 +19,7 @@ func _ready():
 	sort_drive_2()
 	
 	print_checksum()
-	
+	print("Elapsed:"+str(Time.get_ticks_msec()-start_time)+"ms")
 
 
 func parse_document():
@@ -67,14 +68,14 @@ func sort_drive_2():
 	
 
 func sort_drive_1():
-	var count:int = 0
+	
 	var pos:int = 0
 	for n in number_array:
 		if n == -1:
 			
 			var pop_number:int = -1
 			while pop_number == -1:
-				count +=1
+				
 				pop_number = number_array.pop_back()
 			number_array[pos] = pop_number
 		pos+=1

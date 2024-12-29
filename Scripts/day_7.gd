@@ -7,7 +7,7 @@ var results:Array = []
 var equations:Array = []
 
 func _ready() -> void:
-	
+	var start_time:int = Time.get_ticks_msec()
 	while !input_doc.eof_reached():
 		var row:PackedStringArray = input_doc.get_line().split(":")
 		if row.size()>1:
@@ -37,6 +37,8 @@ func _ready() -> void:
 	for v in valid_results:
 		total+=v
 	print("Total:"+str(total))
+	
+	print("Elapsed:"+str(Time.get_ticks_msec()-start_time)+"ms")
 
 func is_conc_valid(result:int,numbers:Array):
 	if numbers.size()==1:

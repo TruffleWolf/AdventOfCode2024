@@ -1,5 +1,4 @@
 
-
 mod day1;
 mod day2;
 mod day3;
@@ -10,6 +9,11 @@ mod day7;
 mod day8;
 mod day9;
 mod day10;
+mod day11;
+mod day12;
+mod day13;
+mod day14;
+mod day15;
 
 pub fn call_daypart(day:i32,part:i32){
     match day{
@@ -91,6 +95,46 @@ pub fn call_daypart(day:i32,part:i32){
             }
             else{
                 day10::part2();
+            }
+        },
+        11 =>{
+            if part == 1{
+                day11::part1();
+            }
+            else{
+                day11::part2();
+            }
+        },
+        12 =>{
+            if part == 1{
+                day12::part1();
+            }
+            else{
+                day12::part2();
+            }
+        },
+        13 =>{
+            if part == 1{
+                day13::part1();
+            }
+            else{
+                day13::part2();
+            }
+        },
+        14 =>{
+            if part == 1{
+                day14::part1();
+            }
+            else{
+                day14::part2();
+            }
+        },
+        15 =>{
+            if part == 1{
+                day15::part1();
+            }
+            else{
+                day15::part2();
             }
         },
         _ => println!("Invalid Day"),
