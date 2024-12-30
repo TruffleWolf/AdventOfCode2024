@@ -12,6 +12,7 @@ var regions:Dictionary = {}
 var parsed_fences:Array[Vector3i] = []
 
 func _ready():
+	var start_time:int = Time.get_ticks_msec()
 	#parse the document
 	while !input_doc.eof_reached():
 		var row:PackedStringArray = input_doc.get_line().split("")
@@ -87,12 +88,14 @@ func _ready():
 	
 	var total:int = 0
 	for h in regions.keys():
-		print(regions[h])
+		#print(regions[h])
 		#Part 1
 		#total+=regions[h][1]*regions[h][2]
 		#Part2
 		total += regions[h][1] * regions[h][3]
 	print("Total:"+str(total))
+	
+	print("Elapsed:"+str(Time.get_ticks_msec()-start_time)+"ms")
 
 #fences are parsed as Vector3 with x/y being the grid coords and z being the facing
 func calc_region(input:Vector2i):

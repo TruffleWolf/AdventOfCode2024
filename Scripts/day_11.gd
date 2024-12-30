@@ -8,7 +8,7 @@ extends Node
 
 
 func _ready() -> void:
-	
+	var start_time:int = Time.get_ticks_msec()
 	var input_array = input_doc.get_line().split(" ",false)
 	
 	for i in input_array:
@@ -18,7 +18,7 @@ func _ready() -> void:
 	#25 for part 1, 75 for part 2
 	parse_stones(75)
 	
-	
+	print("Elapsed:"+str(Time.get_ticks_msec()-start_time)+"ms")
 
 
 #all duplicate stones behave identically
@@ -26,7 +26,6 @@ func _ready() -> void:
 
 func parse_stones(time:int):
 	
-	var parse_time:int = Time.get_ticks_msec()
 	var quant_list:Array[int]
 	for a in stone_list:
 		quant_list.append(1)
@@ -61,8 +60,8 @@ func parse_stones(time:int):
 			count +=1
 			
 		
-		print(str(i)+" in "+ str((Time.get_ticks_msec()-parse_time)))
-		parse_time = Time.get_ticks_msec()
+		
+		
 		quant_list = filtered_quant
 		stone_list = filtered_array
 	
