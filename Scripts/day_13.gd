@@ -5,10 +5,12 @@ extends Node
 var buttons_A:Array[Vector2i] = []
 var buttons_B:Array[Vector2i] = []
 var prizes:Array = []
-var totals:Array[int] = []
+
 
 
 func _ready():
+	var start_time:int = Time.get_ticks_msec()
+	
 	var step:int = 0
 	while !input_doc.eof_reached():
 		
@@ -25,7 +27,7 @@ func _ready():
 				var splitsP = line.split(" ")
 				prizes.append([int(splitsP[-2]),int(splitsP[-1])])
 			3:
-				totals.append(0)
+				pass
 		step+=1
 	
 	
@@ -34,6 +36,8 @@ func _ready():
 	#part_1()
 	#part2
 	part_2()
+	
+	print("Elapsed:"+str(Time.get_ticks_msec()-start_time)+"ms")
 
 func part_2():
 	var total:int = 0

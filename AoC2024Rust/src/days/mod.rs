@@ -14,6 +14,16 @@ mod day12;
 mod day13;
 mod day14;
 mod day15;
+mod day16;
+mod day17;
+mod day18;
+mod day19;
+mod day20;
+mod day21;
+mod day22;
+mod day23;
+mod day24;
+mod day25;
 
 pub fn call_daypart(day:i32,part:i32){
     match day{
@@ -135,6 +145,86 @@ pub fn call_daypart(day:i32,part:i32){
             }
             else{
                 day15::part2();
+            }
+        },
+        16 =>{
+            if part == 1{
+                day16::part1();
+            }
+            else{
+                day16::part2();
+            }
+        },
+        17 =>{
+            if part == 1{
+                day17::part1();
+            }
+            else{
+                day17::part2();
+            }
+        },
+        18 =>{
+            if part == 1{
+                day18::part1();
+            }
+            else{
+                day18::part2();
+            }
+        },
+        19 =>{
+            if part == 1{
+                day19::part1();
+            }
+            else{
+                day19::part2();
+            }
+        },
+        20 =>{
+            if part == 1{
+                day20::part1();
+            }
+            else{
+                day20::part2();
+            }
+        },
+        21 =>{
+            if part == 1{
+                day21::part1();
+            }
+            else{
+                day21::part2();
+            }
+        },
+        22 =>{
+            if part == 1{
+                day22::part1();
+            }
+            else{
+                day22::part2();
+            }
+        },
+        23 =>{
+            if part == 1{
+                day23::part1();
+            }
+            else{
+                day23::part2();
+            }
+        },
+        24 =>{
+            if part == 1{
+                day24::part1();
+            }
+            else{
+                day24::part2();
+            }
+        },
+        25 =>{
+            if part == 1{
+                day25::part1();
+            }
+            else{
+                day25::part2();
             }
         },
         _ => println!("Invalid Day"),
